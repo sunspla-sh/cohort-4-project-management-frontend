@@ -7,7 +7,11 @@ const ProjectPage = () => {
   const [projectsArray, setProjectsArray] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api/projects')
+    axios.get('http://localhost:3001/api/projects', {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('authToken')}`
+      }
+    })
       .then(axiosResponse => {
         console.log(axiosResponse.data)
         setProjectsArray(axiosResponse.data);

@@ -5,7 +5,7 @@ import { AuthContext } from '../context/auth.context';
 
 function LoginPage(){
 
-  const { storeToken } = useContext(AuthContext);
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -26,7 +26,8 @@ function LoginPage(){
       .then(axiosResponse => {
         console.log(axiosResponse.data)
         storeToken(axiosResponse.data.authToken);
-        // navigate('/login');
+        authenticateUser();
+        navigate('/');
       })
       .catch(err => console.log(err));
   }

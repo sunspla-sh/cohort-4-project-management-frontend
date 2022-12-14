@@ -19,6 +19,10 @@ function AddTask(props){
       title: state.title,
       description: state.description,
       projectId: props.projectId
+    }, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('authToken')}`
+      }
     })
       .then(axiosResponse => {
         console.log(axiosResponse.data);
