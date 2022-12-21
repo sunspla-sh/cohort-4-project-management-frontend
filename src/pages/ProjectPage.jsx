@@ -7,7 +7,7 @@ const ProjectPage = () => {
   const [projectsArray, setProjectsArray] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api/projects', {
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/projects`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('authToken')}`
       }

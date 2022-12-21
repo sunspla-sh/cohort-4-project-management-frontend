@@ -14,9 +14,13 @@ const AddProject = () => {
 
   const handleFormSubmit = e => {
     e.preventDefault();
-    axios.post('http://localhost:3001/api/projects', {
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/projects`, {
       title,
       description
+    }, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('authToken')}`
+      }
     })
       .then(axiosResponse => {
         console.log(axiosResponse.data);

@@ -12,7 +12,7 @@ const ProjectDetailsPage = () => {
   const [project, setProject] = useState(null);
 
   const getProjectDetails = () => {
-    axios.get(`http://localhost:3001/api/projects/${projectId}`)
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/projects/${projectId}`)
       .then(axiosResponse => {
         console.log(axiosResponse.data);
         setProject(axiosResponse.data);
